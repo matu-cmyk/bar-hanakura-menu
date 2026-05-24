@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BAR HANAKURA Digital Menu</title>
-
 <style>
+
 :root {
   --bg: #081214;
   --panel: #0f2327;
@@ -357,9 +357,16 @@ footer strong {
   .name { font-size: 15.5px; }
   .desc-ja, .desc-en { font-size: 13px; }
 }
+
+
+/* Static-render safety: menu exists in HTML even if JavaScript fails */
+.section.hidden { display: none; }
+.tabs button:focus-visible,
+.search-wrap input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.no-js-note { display: none; }
+
 </style>
 </head>
-
 <body>
 <div class="page">
   <header class="hero">
@@ -385,18 +392,1014 @@ footer strong {
   </header>
 
   <section class="controls">
-    <nav id="tabs" class="tabs"></nav>
+    <nav id="tabs" class="tabs" aria-label="Menu categories">
+      <button class="active" type="button" data-category="beer">ビール / Beer</button>
+      <button class="" type="button" data-category="nonalcohol">ノンアルコール / Non Alcohol</button>
+      <button class="" type="button" data-category="scotch">スコッチウイスキー / Scotch Whisky</button>
+      <button class="" type="button" data-category="american">アメリカンウイスキー / American Whiskey</button>
+      <button class="" type="button" data-category="irish">アイリッシュウイスキー / Irish Whiskey</button>
+      <button class="" type="button" data-category="japanese">ジャパニーズウイスキー / Japanese Whisky</button>
+      <button class="" type="button" data-category="rum">ラム / Rum・Rhum・Ron</button>
+      <button class="" type="button" data-category="singani">シンガニ / Singani</button>
+      <button class="" type="button" data-category="chilePisco">チリピスコ / Chile Pisco</button>
+      <button class="" type="button" data-category="ginCocktail">ジンカクテル / Gin Cocktails</button>
+      <button class="" type="button" data-category="vodkaCocktail">ウォッカカクテル / Vodka Cocktails</button>
+      <button class="" type="button" data-category="rumCocktail">ラムカクテル / Rum Cocktails</button>
+      <button class="" type="button" data-category="tequilaCocktail">テキーラカクテル / Tequila Cocktails</button>
+    </nav>
     <div class="search-wrap">
-      <input id="search" type="search" placeholder="銘柄・カテゴリで検索 / Search menu">
+      <input id="search" type="search" placeholder="銘柄・カテゴリで検索 / Search menu" autocomplete="off">
     </div>
   </section>
 
   <div class="status">
-    <span id="count"></span>
+    <span id="count">All menu / 99 items</span>
     <span>価格は税込表示 / Tax included</span>
   </div>
 
-  <main id="root"></main>
+  <main id="root">
+    <section class="section" data-category="beer" data-label="ビール / Beer">
+      <div class="section-head">
+        <h2>ビール / Beer</h2>
+        <p>軽やかな一杯から、香ばしいスタウトまで。</p>
+      </div>
+    <article class="item" data-search="コロナビール corona beer ビール / beer メキシコを代表する、軽やかで爽快なラガービールです。 a light and refreshing lager from mexico. 国：メキシコ country: mexico">
+      <div>
+        <div class="name">コロナビール Corona Beer</div>
+        <div class="desc-ja">メキシコを代表する、軽やかで爽快なラガービールです。</div>
+        <div class="desc-en">A light and refreshing lager from Mexico.</div>
+        <div class="meta"><span class="meta-ja">国：メキシコ</span><span class="meta-en">Country: Mexico</span></div>
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ギネス guinness ビール / beer アイルランド発祥。ロースト感とクリーミーな泡が魅力のスタウトです。 an irish stout with roasted flavor and a creamy head. 国：アイルランド country: ireland">
+      <div>
+        <div class="name">ギネス Guinness</div>
+        <div class="desc-ja">アイルランド発祥。ロースト感とクリーミーな泡が魅力のスタウトです。</div>
+        <div class="desc-en">An Irish stout with roasted flavor and a creamy head.</div>
+        <div class="meta"><span class="meta-ja">国：アイルランド</span><span class="meta-en">Country: Ireland</span></div>
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ヒューガルデン hoegaarden ビール / beer ベルギー発祥。柑橘とコリアンダーの香りが爽やかなホワイトビールです。 a belgian wheat beer with citrus and coriander notes. 国：ベルギー country: belgium">
+      <div>
+        <div class="name">ヒューガルデン Hoegaarden</div>
+        <div class="desc-ja">ベルギー発祥。柑橘とコリアンダーの香りが爽やかなホワイトビールです。</div>
+        <div class="desc-en">A Belgian wheat beer with citrus and coriander notes.</div>
+        <div class="meta"><span class="meta-ja">国：ベルギー</span><span class="meta-en">Country: Belgium</span></div>
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="キリン1番絞り kirin ichiban shibori ビール / beer 日本のラガービール。麦の旨みとすっきりした飲み口が特徴です。 a japanese lager with clean malt character and a crisp finish. 国：日本 country: japan">
+      <div>
+        <div class="name">キリン1番絞り Kirin Ichiban Shibori</div>
+        <div class="desc-ja">日本のラガービール。麦の旨みとすっきりした飲み口が特徴です。</div>
+        <div class="desc-en">A Japanese lager with clean malt character and a crisp finish.</div>
+        <div class="meta"><span class="meta-ja">国：日本</span><span class="meta-en">Country: Japan</span></div>
+      </div>
+      <div class="price">¥900<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="nonalcohol" data-label="ノンアルコール / Non Alcohol">
+      <div class="section-head">
+        <h2>ノンアルコール / Non Alcohol</h2>
+        <p>お酒を飲まない方にも、バーの時間をゆっくり楽しんでいただけます。</p>
+      </div>
+    <article class="item" data-search="オレンジジュース orange juice ノンアルコール / non alcohol    ">
+      <div>
+        <div class="name">オレンジジュース Orange Juice</div>
+        
+        
+        
+      </div>
+      <div class="price">¥600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="グレープフルーツジュース grapefruit juice ノンアルコール / non alcohol    ">
+      <div>
+        <div class="name">グレープフルーツジュース Grapefruit Juice</div>
+        
+        
+        
+      </div>
+      <div class="price">¥600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ジンジャーエール ginger ale ノンアルコール / non alcohol    ">
+      <div>
+        <div class="name">ジンジャーエール Ginger Ale</div>
+        
+        
+        
+      </div>
+      <div class="price">¥700<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="コーラ cola ノンアルコール / non alcohol    ">
+      <div>
+        <div class="name">コーラ Cola</div>
+        
+        
+        
+      </div>
+      <div class="price">¥700<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="scotch" data-label="スコッチウイスキー / Scotch Whisky">
+      <div class="section-head">
+        <h2>スコッチウイスキー / Scotch Whisky</h2>
+        <p>地域や蒸溜所ごとの個性を楽しめるスコッチウイスキー。</p>
+      </div>
+    <article class="item" data-search="クライヌリッシュ14年 clynelish 14 years old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">クライヌリッシュ14年 Clynelish 14 Years Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,500<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="グレングラント アルボリラス glen grant arboralis スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">グレングラント アルボリラス Glen Grant Arboralis</div>
+        
+        
+        
+      </div>
+      <div class="price">¥900<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ストラスアーン strathearn スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ストラスアーン Strathearn</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,800<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ハイランドパーク highland park cask strength port cask スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ハイランドパーク Highland Park Cask Strength Port Cask</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="シークレットオークニー signatory vintage secret orkney 2010 スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">シークレットオークニー Signatory Vintage Secret Orkney 2010</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="タリスカー10年 talisker 10 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">タリスカー10年 Talisker 10 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="マクリームーア10年 machrie moor 10 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">マクリームーア10年 Machrie Moor 10 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="マクリームーア カスクストレングス machrie moor cask strength スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">マクリームーア カスクストレングス Machrie Moor Cask Strength</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="レダイグ18年 ledaig 18 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">レダイグ18年 Ledaig 18 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="リンドーズ シングルモルト lindores single malt scotch whisky スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">リンドーズ シングルモルト Lindores Single Malt Scotch Whisky</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ブラドノック10年 bladnoch 10 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ブラドノック10年 Bladnoch 10 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="アードベック10年 ardbeg 10 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">アードベック10年 Ardbeg 10 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ラフロイグ10年 laphroaig 10 years スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ラフロイグ10年 Laphroaig 10 Years</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,500<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ミャオジアム ブルックラディ miaowiam bruichladdich スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ミャオジアム ブルックラディ Miaowiam Bruichladdich</div>
+        
+        
+        
+      </div>
+      <div class="price">¥4,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ミャオジアム ブナハーブン miaowiam bunnahabhain スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ミャオジアム ブナハーブン Miaowiam Bunnahabhain</div>
+        
+        
+        
+      </div>
+      <div class="price">¥4,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ボウモア12年 bowmore 12 years old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ボウモア12年 Bowmore 12 Years Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ディーコン the deacon スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ディーコン The Deacon</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ノーススター グレンロセス north star glenrothes スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ノーススター グレンロセス NORTH STAR GLENROTHES</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="シーバスリーガル 13年 ラムカスク chivas regal 13 years rum cask スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">シーバスリーガル 13年 ラムカスク Chivas Regal 13 Years Rum Cask</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,100<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="グレンギリー12年 glen garioch 12 years スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">グレンギリー12年 Glen Garioch 12 Years</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,500<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="クライゲラキ13年 craigellachie 13 years スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">クライゲラキ13年 Craigellachie 13 Years</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,300<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ストラスアイラ 2008 strathisla スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ストラスアイラ 2008 Strathisla</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ケイデンヘッド トミントール14年 tomintoul 14 years スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ケイデンヘッド トミントール14年 Tomintoul 14 Years</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="グレンファークラス ヘリテージ glenfarclas heritage スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">グレンファークラス ヘリテージ Glenfarclas Heritage</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ベンリアック ザ・オリジナル テン benriach the original ten スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ベンリアック ザ・オリジナル テン Benriach The Original Ten</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="グレンエルギン 12年 glen elgin 12 year old スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">グレンエルギン 12年 Glen Elgin 12 Year Old</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,800<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ウシュクベ・リザーブ usquaebach reserve スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ウシュクベ・リザーブ Usquaebach Reserve</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ザ・ウイスキートレイル クロフテンギア the whisky trail croftengea スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ザ・ウイスキートレイル クロフテンギア The Whisky Trail Croftengea</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,500<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="アン・オークニー ディスティラリー 14年 2007 スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">アン・オークニー ディスティラリー 14年 2007</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ブレンデッドモルト 18年 2007 ウイスキートレイル レボリューション スコッチウイスキー / scotch whisky    ">
+      <div>
+        <div class="name">ブレンデッドモルト 18年 2007 ウイスキートレイル レボリューション</div>
+        
+        
+        
+      </div>
+      <div class="price">¥2,200<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="american" data-label="アメリカンウイスキー / American Whiskey">
+      <div class="section-head">
+        <h2>アメリカンウイスキー / American Whiskey</h2>
+        <p>バーボン、コーン、アメリカンシングルモルトなど。</p>
+      </div>
+    <article class="item" data-search="メーカーズマーク maker&#x27;s mark アメリカンウイスキー / american whiskey    ">
+      <div>
+        <div class="name">メーカーズマーク Maker&#x27;s Mark</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="i・wハーパーゴールドメダル i.w. harper gold medal アメリカンウイスキー / american whiskey    ">
+      <div>
+        <div class="name">I・Wハーパーゴールドメダル I.W. Harper Gold Medal</div>
+        
+        
+        
+      </div>
+      <div class="price">¥900<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ジョージアムーン georgia moon アメリカンウイスキー / american whiskey    ">
+      <div>
+        <div class="name">ジョージアムーン Georgia Moon</div>
+        
+        
+        
+      </div>
+      <div class="price">¥800<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="メロウコーン mellow corn アメリカンウイスキー / american whiskey    ">
+      <div>
+        <div class="name">メロウコーン Mellow Corn</div>
+        
+        
+        
+      </div>
+      <div class="price">¥900<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ウエストランド westland american single malt アメリカンウイスキー / american whiskey    ">
+      <div>
+        <div class="name">ウエストランド Westland American Single Malt</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="irish" data-label="アイリッシュウイスキー / Irish Whiskey">
+      <div class="section-head">
+        <h2>アイリッシュウイスキー / Irish Whiskey</h2>
+        <p>なめらかで親しみやすいアイリッシュウイスキー。</p>
+      </div>
+    <article class="item" data-search="ジェムソン jameson アイリッシュウイスキー / irish whiskey    ">
+      <div>
+        <div class="name">ジェムソン Jameson</div>
+        
+        
+        
+      </div>
+      <div class="price">¥900<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="イーガンズ フォーティテュード egan&#x27;s fortitude アイリッシュウイスキー / irish whiskey    ">
+      <div>
+        <div class="name">イーガンズ フォーティテュード Egan&#x27;s Fortitude</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="japanese" data-label="ジャパニーズウイスキー / Japanese Whisky">
+      <div class="section-head">
+        <h2>ジャパニーズウイスキー / Japanese Whisky</h2>
+        <p>日本各地の蒸溜所・ブランドによるウイスキー。</p>
+      </div>
+    <article class="item" data-search="ニッカカフェグレーン nikka coffey grain ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">ニッカカフェグレーン Nikka Coffey Grain</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="アマハガン ウインターエディション amahagan edition winter ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">アマハガン ウインターエディション AMAHAGAN Edition Winter</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="竹鶴 ピュアモルト taketsuru pure malt ジャパニーズウイスキー / japanese whisky 余市と宮城峡のモルトを調和させた、ニッカのピュアモルトウイスキーです。なめらかな口当たりと、重なりのある香味が魅力です。 a nikka pure malt whisky harmonizing malts from yoichi and miyagikyo, with a smooth texture and layered aroma and flavor. 度数：43% abv: 43%">
+      <div>
+        <div class="name">竹鶴 ピュアモルト Taketsuru Pure Malt</div>
+        <div class="desc-ja">余市と宮城峡のモルトを調和させた、ニッカのピュアモルトウイスキーです。なめらかな口当たりと、重なりのある香味が魅力です。</div>
+        <div class="desc-en">A Nikka pure malt whisky harmonizing malts from Yoichi and Miyagikyo, with a smooth texture and layered aroma and flavor.</div>
+        <div class="meta"><span class="meta-ja">度数：43%</span><span class="meta-en">ABV: 43%</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="嘉之助 アーティストエディション kanosuke artist edition ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">嘉之助 アーティストエディション Kanosuke Artist Edition</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,700<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="嘉之助 2023エディション kanosuke 2023 edition ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">嘉之助 2023エディション Kanosuke 2023 Edition</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,700<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="津貫2022エディション tsunuki 2022 edition ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">津貫2022エディション Tsunuki 2022 Edition</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="津貫2023エディション tsunuki 2023 edition ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">津貫2023エディション Tsunuki 2023 Edition</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="駒ケ岳2021エディション komagatake 2021 edition ジャパニーズウイスキー / japanese whisky    ">
+      <div>
+        <div class="name">駒ケ岳2021エディション Komagatake 2021 Edition</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="rum" data-label="ラム / Rum・Rhum・Ron">
+      <div class="section-head">
+        <h2>ラム / Rum・Rhum・Ron</h2>
+        <p>地域や製法で表情が変わる、奥行きのあるスピリッツ。</p>
+      </div>
+    <article class="item" data-search="rum nation savanna small batch ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">Rum Nation Savanna Small Batch</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="パナマ5年 panamanian rum aged 5 years ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">パナマ5年 Panamanian Rum Aged 5 Years</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="プランテーションラム ガイアナ2008 plantation rum guyana 2008 ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">プランテーションラム ガイアナ2008 Plantation Rum Guyana 2008</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ロンコロン ラムライ ron colón rumrye ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">ロンコロン ラムライ Ron Colón RumRye</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="モカンボ15年 mocambo 15 year ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">モカンボ15年 Mocambo 15 Year</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="サンタテレサ santa teresa 1796 ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">サンタテレサ Santa Teresa 1796</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="エルロンプロイビート15年 el ron prohibido gran reserva 15 ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">エルロンプロイビート15年 El Ron Prohibido Gran Reserva 15</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="レモンハート デメラララム lemon hart demerara rum ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">レモンハート デメラララム Lemon Hart Demerara Rum</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="boso rhum blanc fleur -花- ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">BOSO Rhum blanc Fleur -花-</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="boso rhum fleur -花- contient de la mélasse ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">BOSO Rhum Fleur -花- Contient de la mélasse</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="boso rhum agricole ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">BOSO Rhum Agricole</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="極上 琵琶乃甘露 ワールドラムリキュール ラム / rum・rhum・ron    ">
+      <div>
+        <div class="name">極上 琵琶乃甘露 ワールドラムリキュール</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="singani" data-label="シンガニ / Singani">
+      <div class="section-head">
+        <h2>シンガニ / Singani</h2>
+        <p>ボリビアのマスカット・オブ・アレキサンドリア由来の蒸留酒。</p>
+      </div>
+    <article class="item" data-search="ルフェロ メスカドール rujero private collection mezclador シンガニ / singani    ">
+      <div>
+        <div class="name">ルフェロ メスカドール Rujero Private Collection Mezclador</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ルフェロ ブラック rujero private collection black シンガニ / singani    ">
+      <div>
+        <div class="name">ルフェロ ブラック Rujero Private Collection Black</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,100<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ルフェロ グアルダ rujero destilado de guarda シンガニ / singani    ">
+      <div>
+        <div class="name">ルフェロ グアルダ Rujero Destilado de Guarda</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,300<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ルフェロ パッションフルーツ rujero passion fruit シンガニ / singani    ">
+      <div>
+        <div class="name">ルフェロ パッションフルーツ Rujero Passion Fruit</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ルフェロ タリクサ rujero tarixa シンガニ / singani    ">
+      <div>
+        <div class="name">ルフェロ タリクサ Rujero Tarixa</div>
+        
+        
+        
+      </div>
+      <div class="price">¥3,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ロスパラレス クラシコ los parrales clasico シンガニ / singani    ">
+      <div>
+        <div class="name">ロスパラレス クラシコ Los Parrales Clasico</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ロスパラレス ダブルオロ los parrales reserva doble oro シンガニ / singani    ">
+      <div>
+        <div class="name">ロスパラレス ダブルオロ Los Parrales Reserva Doble Oro</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,100<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ロスパラレス ヘレンシア los parrales herencia シンガニ / singani    ">
+      <div>
+        <div class="name">ロスパラレス ヘレンシア Los Parrales Herencia</div>
+        
+        
+        
+      </div>
+      <div class="price">¥3,000<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="サンペドロ オロ san pedro oro シンガニ / singani    ">
+      <div>
+        <div class="name">サンペドロ オロ San Pedro Oro</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,100<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="カーサレアル ドンルーチョ casa real don lucho シンガニ / singani    ">
+      <div>
+        <div class="name">カーサレアル ドンルーチョ Casa Real Don Lucho</div>
+        
+        
+        
+      </div>
+      <div class="price">¥3,000<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="chilePisco" data-label="チリピスコ / Chile Pisco">
+      <div class="section-head">
+        <h2>チリピスコ / Chile Pisco</h2>
+        <p>チリのブドウ蒸留酒。</p>
+      </div>
+    <article class="item" data-search="ピスコワカー pisco waqa チリピスコ / chile pisco    ">
+      <div>
+        <div class="name">ピスコワカー Pisco Waqa</div>
+        
+        
+        
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="ginCocktail" data-label="ジンカクテル / Gin Cocktails">
+      <div class="section-head">
+        <h2>ジンカクテル / Gin Cocktails</h2>
+        <p>ジンを使った定番カクテル。</p>
+      </div>
+    <article class="item" data-search="ジントニック gin and tonic ジンカクテル / gin cocktails ジン / トニックウォーター / ライム gin / tonic water / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ジントニック Gin and Tonic</div>
+        <div class="desc-ja">ジン / トニックウォーター / ライム</div>
+        <div class="desc-en">Gin / Tonic water / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ジンバック gin buck ジンカクテル / gin cocktails ジン / ジンジャーエール / レモン gin / ginger ale / lemon スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ジンバック Gin Buck</div>
+        <div class="desc-ja">ジン / ジンジャーエール / レモン</div>
+        <div class="desc-en">Gin / Ginger ale / Lemon</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ジンライム gin lime ジンカクテル / gin cocktails ジン / ライム gin / lime スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">ジンライム Gin Lime</div>
+        <div class="desc-ja">ジン / ライム</div>
+        <div class="desc-en">Gin / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ジンフィズ gin fizz ジンカクテル / gin cocktails ジン / レモン / 砂糖 / ソーダ gin / lemon / sugar / soda スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ジンフィズ Gin Fizz</div>
+        <div class="desc-ja">ジン / レモン / 砂糖 / ソーダ</div>
+        <div class="desc-en">Gin / Lemon / Sugar / Soda</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ホワイトレディ white lady ジンカクテル / gin cocktails ジン / オレンジリキュール / レモン gin / orange liqueur / lemon スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">ホワイトレディ White Lady</div>
+        <div class="desc-ja">ジン / オレンジリキュール / レモン</div>
+        <div class="desc-en">Gin / Orange liqueur / Lemon</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ギムレット gimlet ジンカクテル / gin cocktails ジン / ライム gin / lime スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">ギムレット Gimlet</div>
+        <div class="desc-ja">ジン / ライム</div>
+        <div class="desc-en">Gin / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="マティーニ martini ジンカクテル / gin cocktails ジン / ドライベルモット gin / dry vermouth スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">マティーニ Martini</div>
+        <div class="desc-ja">ジン / ドライベルモット</div>
+        <div class="desc-en">Gin / Dry vermouth</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,600<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ネグローニ negroni ジンカクテル / gin cocktails ジン / カンパリ / スイートベルモット gin / campari / sweet vermouth スタイル：ロック / アルコール感：強 style: on the rocks / strength: strong">
+      <div>
+        <div class="name">ネグローニ Negroni</div>
+        <div class="desc-ja">ジン / カンパリ / スイートベルモット</div>
+        <div class="desc-en">Gin / Campari / Sweet vermouth</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロック / アルコール感：強</span><span class="meta-en">Style: On the rocks / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="vodkaCocktail" data-label="ウォッカカクテル / Vodka Cocktails">
+      <div class="section-head">
+        <h2>ウォッカカクテル / Vodka Cocktails</h2>
+        <p>ウォッカを使った定番カクテル。</p>
+      </div>
+    <article class="item" data-search="ウォッカトニック vodka tonic ウォッカカクテル / vodka cocktails ウォッカ / トニックウォーター / ライム vodka / tonic water / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ウォッカトニック Vodka Tonic</div>
+        <div class="desc-ja">ウォッカ / トニックウォーター / ライム</div>
+        <div class="desc-en">Vodka / Tonic water / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,100<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="モスコミュール moscow mule ウォッカカクテル / vodka cocktails ウォッカ / ジンジャーエール / ライム vodka / ginger ale / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">モスコミュール Moscow Mule</div>
+        <div class="desc-ja">ウォッカ / ジンジャーエール / ライム</div>
+        <div class="desc-en">Vodka / Ginger ale / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ブラックルシアン black russian ウォッカカクテル / vodka cocktails ウォッカ / コーヒーリキュール vodka / coffee liqueur スタイル：ロック / アルコール感：強 style: on the rocks / strength: strong">
+      <div>
+        <div class="name">ブラックルシアン Black Russian</div>
+        <div class="desc-ja">ウォッカ / コーヒーリキュール</div>
+        <div class="desc-en">Vodka / Coffee liqueur</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロック / アルコール感：強</span><span class="meta-en">Style: On the rocks / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ホワイトルシアン white russian ウォッカカクテル / vodka cocktails ウォッカ / コーヒーリキュール / 生クリーム vodka / coffee liqueur / cream スタイル：ロック / アルコール感：中〜強 style: on the rocks / strength: medium to strong">
+      <div>
+        <div class="name">ホワイトルシアン White Russian</div>
+        <div class="desc-ja">ウォッカ / コーヒーリキュール / 生クリーム</div>
+        <div class="desc-en">Vodka / Coffee liqueur / Cream</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロック / アルコール感：中〜強</span><span class="meta-en">Style: On the rocks / Strength: Medium to strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ブラッディメアリー bloody mary ウォッカカクテル / vodka cocktails ウォッカ / トマトジュース / スパイス vodka / tomato juice / spices スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ブラッディメアリー Bloody Mary</div>
+        <div class="desc-ja">ウォッカ / トマトジュース / スパイス</div>
+        <div class="desc-en">Vodka / Tomato juice / Spices</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ブラッディシーザー bloody caesar ウォッカカクテル / vodka cocktails ウォッカ / クラマト / スパイス vodka / clamato / spices スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ブラッディシーザー Bloody Caesar</div>
+        <div class="desc-ja">ウォッカ / クラマト / スパイス</div>
+        <div class="desc-en">Vodka / Clamato / Spices</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,300<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="バラライカ balalaika ウォッカカクテル / vodka cocktails ウォッカ / オレンジリキュール / レモン vodka / orange liqueur / lemon スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">バラライカ Balalaika</div>
+        <div class="desc-ja">ウォッカ / オレンジリキュール / レモン</div>
+        <div class="desc-en">Vodka / Orange liqueur / Lemon</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="rumCocktail" data-label="ラムカクテル / Rum Cocktails">
+      <div class="section-head">
+        <h2>ラムカクテル / Rum Cocktails</h2>
+        <p>ラムを使った定番カクテル。</p>
+      </div>
+    <article class="item" data-search="ラムトニック rum tonic ラムカクテル / rum cocktails ラム / トニックウォーター / ライム rum / tonic water / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ラムトニック Rum Tonic</div>
+        <div class="desc-ja">ラム / トニックウォーター / ライム</div>
+        <div class="desc-en">Rum / Tonic water / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ラムバック rum buck ラムカクテル / rum cocktails ラム / ジンジャーエール / ライム rum / ginger ale / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">ラムバック Rum Buck</div>
+        <div class="desc-ja">ラム / ジンジャーエール / ライム</div>
+        <div class="desc-en">Rum / Ginger ale / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="キューバリブレ cuba libre ラムカクテル / rum cocktails ラム / コーラ / ライム rum / cola / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">キューバリブレ Cuba Libre</div>
+        <div class="desc-ja">ラム / コーラ / ライム</div>
+        <div class="desc-en">Rum / Cola / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="xyz ラムカクテル / rum cocktails ラム / オレンジリキュール / レモン rum / orange liqueur / lemon スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">XYZ</div>
+        <div class="desc-ja">ラム / オレンジリキュール / レモン</div>
+        <div class="desc-en">Rum / Orange liqueur / Lemon</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="ダイキリ daiquiri ラムカクテル / rum cocktails ラム / ライム / 砂糖 rum / lime / sugar スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">ダイキリ Daiquiri</div>
+        <div class="desc-ja">ラム / ライム / 砂糖</div>
+        <div class="desc-en">Rum / Lime / Sugar</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    </section>
+
+    <section class="section" data-category="tequilaCocktail" data-label="テキーラカクテル / Tequila Cocktails">
+      <div class="section-head">
+        <h2>テキーラカクテル / Tequila Cocktails</h2>
+        <p>テキーラを使った定番カクテル。</p>
+      </div>
+    <article class="item" data-search="テキーラトニック tequila tonic テキーラカクテル / tequila cocktails テキーラ / トニックウォーター / ライム tequila / tonic water / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">テキーラトニック Tequila Tonic</div>
+        <div class="desc-ja">テキーラ / トニックウォーター / ライム</div>
+        <div class="desc-en">Tequila / Tonic water / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="テキーラバック tequila buck テキーラカクテル / tequila cocktails テキーラ / ジンジャーエール / ライム tequila / ginger ale / lime スタイル：ロング / アルコール感：中 style: long / strength: medium">
+      <div>
+        <div class="name">テキーラバック Tequila Buck</div>
+        <div class="desc-ja">テキーラ / ジンジャーエール / ライム</div>
+        <div class="desc-en">Tequila / Ginger ale / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ロング / アルコール感：中</span><span class="meta-en">Style: Long / Strength: Medium</span></div>
+      </div>
+      <div class="price">¥1,200<span class="tax">税込</span></div>
+    </article>
+    <article class="item" data-search="マルガリータ margarita テキーラカクテル / tequila cocktails テキーラ / オレンジリキュール / ライム tequila / orange liqueur / lime スタイル：ショート / アルコール感：強 style: short / strength: strong">
+      <div>
+        <div class="name">マルガリータ Margarita</div>
+        <div class="desc-ja">テキーラ / オレンジリキュール / ライム</div>
+        <div class="desc-en">Tequila / Orange liqueur / Lime</div>
+        <div class="meta"><span class="meta-ja">スタイル：ショート / アルコール感：強</span><span class="meta-en">Style: Short / Strength: Strong</span></div>
+      </div>
+      <div class="price">¥1,400<span class="tax">税込</span></div>
+    </article>
+    </section>
+  </main>
 
   <footer>
     <strong>BAR HANAKURA</strong><br>
@@ -422,110 +1425,57 @@ footer strong {
 </div>
 
 <script>
-const menuItems = [
-  {"category":"beer","name":"コロナビール Corona Beer","price":1000,"descJa":"メキシコを代表する、軽やかで爽快なラガービールです。","descEn":"A light and refreshing lager from Mexico.","metaJa":"国：メキシコ","metaEn":"Country: Mexico"},
-  {"category":"beer","name":"ギネス Guinness","price":1000,"descJa":"アイルランド発祥。ロースト感とクリーミーな泡が魅力のスタウトです。","descEn":"An Irish stout with roasted flavor and a creamy head.","metaJa":"国：アイルランド","metaEn":"Country: Ireland"},
-  {"category":"beer","name":"ヒューガルデン Hoegaarden","price":1000,"descJa":"ベルギー発祥。柑橘とコリアンダーの香りが爽やかなホワイトビールです。","descEn":"A Belgian wheat beer with citrus and coriander notes.","metaJa":"国：ベルギー","metaEn":"Country: Belgium"},
-  {"category":"beer","name":"キリン1番絞り Kirin Ichiban Shibori","price":900,"descJa":"日本のラガービール。麦の旨みとすっきりした飲み口が特徴です。","descEn":"A Japanese lager with clean malt character and a crisp finish.","metaJa":"国：日本","metaEn":"Country: Japan"},
+(function() {
+  const tabs = Array.from(document.querySelectorAll('#tabs button'));
+  const sections = Array.from(document.querySelectorAll('#root .section'));
+  const search = document.getElementById('search');
+  const count = document.getElementById('count');
+  const categoryLabels = {"beer": "ビール / Beer", "nonalcohol": "ノンアルコール / Non Alcohol", "scotch": "スコッチウイスキー / Scotch Whisky", "american": "アメリカンウイスキー / American Whiskey", "irish": "アイリッシュウイスキー / Irish Whiskey", "japanese": "ジャパニーズウイスキー / Japanese Whisky", "rum": "ラム / Rum・Rhum・Ron", "singani": "シンガニ / Singani", "chilePisco": "チリピスコ / Chile Pisco", "ginCocktail": "ジンカクテル / Gin Cocktails", "vodkaCocktail": "ウォッカカクテル / Vodka Cocktails", "rumCocktail": "ラムカクテル / Rum Cocktails", "tequilaCocktail": "テキーラカクテル / Tequila Cocktails"};
+  let currentCategory = "beer";
 
-  {"category":"nonalcohol","name":"オレンジジュース Orange Juice","price":600},
-  {"category":"nonalcohol","name":"グレープフルーツジュース Grapefruit Juice","price":600},
-  {"category":"nonalcohol","name":"ジンジャーエール Ginger Ale","price":700},
-  {"category":"nonalcohol","name":"コーラ Cola","price":700},
+  function applyFilter() {
+    const q = (search.value || '').trim().toLowerCase();
+    let visibleItems = 0;
 
-  {"category":"scotch","name":"クライヌリッシュ14年 Clynelish 14 Years Old","price":1500},
-  {"category":"scotch","name":"グレングラント アルボリラス Glen Grant Arboralis","price":900},
-  {"category":"scotch","name":"ストラスアーン Strathearn","price":1800},
-  {"category":"scotch","name":"ハイランドパーク Highland Park Cask Strength Port Cask","price":1600},
-  {"category":"scotch","name":"シークレットオークニー Signatory Vintage Secret Orkney 2010","price":1600},
-  {"category":"scotch","name":"タリスカー10年 Talisker 10 Year Old","price":1400},
-  {"category":"scotch","name":"マクリームーア10年 Machrie Moor 10 Year Old","price":1600},
-  {"category":"scotch","name":"マクリームーア カスクストレングス Machrie Moor Cask Strength","price":1600},
-  {"category":"scotch","name":"レダイグ18年 Ledaig 18 Year Old","price":2000},
-  {"category":"scotch","name":"リンドーズ シングルモルト Lindores Single Malt Scotch Whisky","price":1400},
-  {"category":"scotch","name":"ブラドノック10年 Bladnoch 10 Year Old","price":1400},
-  {"category":"scotch","name":"アードベック10年 Ardbeg 10 Year Old","price":1400},
-  {"category":"scotch","name":"ラフロイグ10年 Laphroaig 10 Years","price":1500},
-  {"category":"scotch","name":"ミャオジアム ブルックラディ Miaowiam Bruichladdich","price":4000},
-  {"category":"scotch","name":"ミャオジアム ブナハーブン Miaowiam Bunnahabhain","price":4000},
-  {"category":"scotch","name":"ボウモア12年 Bowmore 12 Years Old","price":1400},
-  {"category":"scotch","name":"ディーコン The Deacon","price":1000},
-  {"category":"scotch","name":"ノーススター グレンロセス NORTH STAR GLENROTHES","price":2000},
-  {"category":"scotch","name":"シーバスリーガル 13年 ラムカスク Chivas Regal 13 Years Rum Cask","price":1100},
-  {"category":"scotch","name":"グレンギリー12年 Glen Garioch 12 Years","price":1500},
-  {"category":"scotch","name":"クライゲラキ13年 Craigellachie 13 Years","price":1300},
-  {"category":"scotch","name":"ストラスアイラ 2008 Strathisla","price":2000},
-  {"category":"scotch","name":"ケイデンヘッド トミントール14年 Tomintoul 14 Years","price":1400},
-  {"category":"scotch","name":"グレンファークラス ヘリテージ Glenfarclas Heritage","price":1000},
-  {"category":"scotch","name":"ベンリアック ザ・オリジナル テン Benriach The Original Ten","price":1200},
-  {"category":"scotch","name":"グレンエルギン 12年 Glen Elgin 12 Year Old","price":1800},
-  {"category":"scotch","name":"ウシュクベ・リザーブ Usquaebach Reserve","price":1400},
-  {"category":"scotch","name":"ザ・ウイスキートレイル クロフテンギア The Whisky Trail Croftengea","price":2500},
-  {"category":"scotch","name":"アン・オークニー ディスティラリー 14年 2007","price":2000},
-  {"category":"scotch","name":"ブレンデッドモルト 18年 2007 ウイスキートレイル レボリューション","price":2200},
+    sections.forEach(section => {
+      const sectionCategory = section.dataset.category;
+      const categoryMatched = !q && sectionCategory === currentCategory;
+      let sectionHasVisibleItem = false;
 
-  {"category":"american","name":"メーカーズマーク Maker's Mark","price":1000},
-  {"category":"american","name":"I・Wハーパーゴールドメダル I.W. Harper Gold Medal","price":900},
-  {"category":"american","name":"ジョージアムーン Georgia Moon","price":800},
-  {"category":"american","name":"メロウコーン Mellow Corn","price":900},
-  {"category":"american","name":"ウエストランド Westland American Single Malt","price":1200},
+      const items = Array.from(section.querySelectorAll('.item'));
+      items.forEach(item => {
+        const itemMatched = q ? item.dataset.search.includes(q) : categoryMatched;
+        item.style.display = itemMatched ? '' : 'none';
+        if (itemMatched) {
+          visibleItems += 1;
+          sectionHasVisibleItem = true;
+        }
+      });
 
-  {"category":"irish","name":"ジェムソン Jameson","price":900},
-  {"category":"irish","name":"イーガンズ フォーティテュード Egan's Fortitude","price":1400},
+      section.classList.toggle('hidden', !sectionHasVisibleItem);
+    });
 
-  {"category":"japanese","name":"ニッカカフェグレーン Nikka Coffey Grain","price":1400},
-  {"category":"japanese","name":"アマハガン ウインターエディション AMAHAGAN Edition Winter","price":1400},
-  {"category":"japanese","name":"竹鶴 ピュアモルト Taketsuru Pure Malt","price":1400,"descJa":"余市と宮城峡のモルトを調和させた、ニッカのピュアモルトウイスキーです。なめらかな口当たりと、重なりのある香味が魅力です。","descEn":"A Nikka pure malt whisky harmonizing malts from Yoichi and Miyagikyo, with a smooth texture and layered aroma and flavor.","metaJa":"度数：43%","metaEn":"ABV: 43%"},
-  {"category":"japanese","name":"嘉之助 アーティストエディション Kanosuke Artist Edition","price":1700},
-  {"category":"japanese","name":"嘉之助 2023エディション Kanosuke 2023 Edition","price":1700},
-  {"category":"japanese","name":"津貫2022エディション Tsunuki 2022 Edition","price":1600},
-  {"category":"japanese","name":"津貫2023エディション Tsunuki 2023 Edition","price":1600},
-  {"category":"japanese","name":"駒ケ岳2021エディション Komagatake 2021 Edition","price":1600},
+    tabs.forEach(button => {
+      button.classList.toggle('active', !q && button.dataset.category === currentCategory);
+    });
 
-  {"category":"rum","name":"Rum Nation Savanna Small Batch","price":1600},
-  {"category":"rum","name":"パナマ5年 Panamanian Rum Aged 5 Years","price":1600},
-  {"category":"rum","name":"プランテーションラム ガイアナ2008 Plantation Rum Guyana 2008","price":1400},
-  {"category":"rum","name":"ロンコロン ラムライ Ron Colón RumRye","price":1400},
-  {"category":"rum","name":"モカンボ15年 Mocambo 15 Year","price":1400},
-  {"category":"rum","name":"サンタテレサ Santa Teresa 1796","price":1400},
-  {"category":"rum","name":"エルロンプロイビート15年 El Ron Prohibido Gran Reserva 15","price":1200},
-  {"category":"rum","name":"レモンハート デメラララム Lemon Hart Demerara Rum","price":1400},
-  {"category":"rum","name":"BOSO Rhum blanc Fleur -花-","price":1000},
-  {"category":"rum","name":"BOSO Rhum Fleur -花- Contient de la mélasse","price":1000},
-  {"category":"rum","name":"BOSO Rhum Agricole","price":1400},
-  {"category":"rum","name":"極上 琵琶乃甘露 ワールドラムリキュール","price":1600},
+    count.textContent = q
+      ? `${visibleItems} items found`
+      : `${categoryLabels[currentCategory]} / ${visibleItems} items`;
+  }
 
-  {"category":"singani","name":"ルフェロ メスカドール Rujero Private Collection Mezclador","price":1000},
-  {"category":"singani","name":"ルフェロ ブラック Rujero Private Collection Black","price":1100},
-  {"category":"singani","name":"ルフェロ グアルダ Rujero Destilado de Guarda","price":1300},
-  {"category":"singani","name":"ルフェロ パッションフルーツ Rujero Passion Fruit","price":1000},
-  {"category":"singani","name":"ルフェロ タリクサ Rujero Tarixa","price":3000},
-  {"category":"singani","name":"ロスパラレス クラシコ Los Parrales Clasico","price":1000},
-  {"category":"singani","name":"ロスパラレス ダブルオロ Los Parrales Reserva Doble Oro","price":1100},
-  {"category":"singani","name":"ロスパラレス ヘレンシア Los Parrales Herencia","price":3000},
-  {"category":"singani","name":"サンペドロ オロ San Pedro Oro","price":1100},
-  {"category":"singani","name":"カーサレアル ドンルーチョ Casa Real Don Lucho","price":3000},
+  tabs.forEach(button => {
+    button.addEventListener('click', () => {
+      currentCategory = button.dataset.category;
+      search.value = '';
+      applyFilter();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 
-  {"category":"chilePisco","name":"ピスコワカー Pisco Waqa","price":1200},
-
-  {"category":"ginCocktail","name":"ジントニック Gin and Tonic","price":1200,"descJa":"ジン / トニックウォーター / ライム","descEn":"Gin / Tonic water / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"ginCocktail","name":"ジンバック Gin Buck","price":1200,"descJa":"ジン / ジンジャーエール / レモン","descEn":"Gin / Ginger ale / Lemon","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"ginCocktail","name":"ジンライム Gin Lime","price":1400,"descJa":"ジン / ライム","descEn":"Gin / Lime","metaJa":"スタイル：ショート / アルコール感：強","metaEn":"Style: Short / Strength: Strong"},
-  {"category":"ginCocktail","name":"ジンフィズ Gin Fizz","price":1400,"descJa":"ジン / レモン / 砂糖 / ソーダ","descEn":"Gin / Lemon / Sugar / Soda","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"ginCocktail","name":"ホワイトレディ White Lady","price":1400,"descJa":"ジン / オレンジリキュール / レモン","descEn":"Gin / Orange liqueur / Lemon","metaJa":"スタイル：ショート / アルコール感：強","metaEn":"Style: Short / Strength: Strong"},
-  {"category":"ginCocktail","name":"ギムレット Gimlet","price":1400,"descJa":"ジン / ライム","descEn":"Gin / Lime","metaJa":"スタイル：ショート / アルコール感：強","metaEn":"Style: Short / Strength: Strong"},
-  {"category":"ginCocktail","name":"マティーニ Martini","price":1600,"descJa":"ジン / ドライベルモット","descEn":"Gin / Dry vermouth","metaJa":"スタイル：ショート / アルコール感：強","metaEn":"Style: Short / Strength: Strong"},
-  {"category":"ginCocktail","name":"ネグローニ Negroni","price":1400,"descJa":"ジン / カンパリ / スイートベルモット","descEn":"Gin / Campari / Sweet vermouth","metaJa":"スタイル：ロック / アルコール感：強","metaEn":"Style: On the rocks / Strength: Strong"},
-
-  {"category":"vodkaCocktail","name":"ウォッカトニック Vodka Tonic","price":1100,"descJa":"ウォッカ / トニックウォーター / ライム","descEn":"Vodka / Tonic water / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"vodkaCocktail","name":"モスコミュール Moscow Mule","price":1200,"descJa":"ウォッカ / ジンジャーエール / ライム","descEn":"Vodka / Ginger ale / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"vodkaCocktail","name":"ブラックルシアン Black Russian","price":1400,"descJa":"ウォッカ / コーヒーリキュール","descEn":"Vodka / Coffee liqueur","metaJa":"スタイル：ロック / アルコール感：強","metaEn":"Style: On the rocks / Strength: Strong"},
-  {"category":"vodkaCocktail","name":"ホワイトルシアン White Russian","price":1400,"descJa":"ウォッカ / コーヒーリキュール / 生クリーム","descEn":"Vodka / Coffee liqueur / Cream","metaJa":"スタイル：ロック / アルコール感：中〜強","metaEn":"Style: On the rocks / Strength: Medium to strong"},
-  {"category":"vodkaCocktail","name":"ブラッディメアリー Bloody Mary","price":1200,"descJa":"ウォッカ / トマトジュース / スパイス","descEn":"Vodka / Tomato juice / Spices","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"vodkaCocktail","name":"ブラッディシーザー Bloody Caesar","price":1300,"descJa":"ウォッカ / クラマト / スパイス","descEn":"Vodka / Clamato / Spices","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"vodkaCocktail","name":"バラライカ Balalaika","price":1400,"descJa":"ウォッカ / オレンジリキュール / レモン","descEn":"Vodka / Orange liqueur / Lemon","metaJa":"スタイル：ショート / アルコール感：強","metaEn":"Style: Short / Strength: Strong"},
-
-  {"category":"rumCocktail","name":"ラムトニック Rum Tonic","price":1200,"descJa":"ラム / トニックウォーター / ライム","descEn":"Rum / Tonic water / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"rumCocktail","name":"ラムバック Rum Buck","price":1200,"descJa":"ラム / ジンジャーエール / ライム","descEn":"Rum / Ginger ale / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"rumCocktail","name":"キューバリブレ Cuba Libre","price":1200,"descJa":"ラム / コーラ / ライム","descEn":"Rum / Cola / Lime","metaJa":"スタイル：ロング / アルコール感：中","metaEn":"Style: Long / Strength: Medium"},
-  {"category":"rumCocktail","name":"XYZ","price
+  search.addEventListener('input', applyFilter);
+  applyFilter();
+})();
+</script>
+</body>
+</html>
