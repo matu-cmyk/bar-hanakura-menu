@@ -24,7 +24,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
 body {
   margin: 0;
@@ -113,6 +113,7 @@ h1 {
 }
 
 .controls {
+  scroll-margin-top: 16px;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -178,6 +179,7 @@ h1 {
 }
 
 .section {
+  scroll-margin-top: 96px;
   border: 1px solid var(--line-soft);
   background: rgba(255,255,255,.035);
   border-radius: 22px;
@@ -373,19 +375,15 @@ footer strong {
 }
 
 .section {
-  scroll-margin-top: 118px;
+  scroll-margin-top: 96px;
 }
 
-.light-note {
-  width: 100%;
-  border: 1px solid var(--line-soft);
-  background: rgba(255,255,255,.04);
-  color: var(--dim);
-  border-radius: 16px;
-  padding: 10px 12px;
-  font-size: 12px;
-  line-height: 1.6;
+
+@media (min-width: 720px) {
+  html { scroll-padding-top: 96px; }
+  .section { scroll-margin-top: 96px; }
 }
+
 </style>
 </head>
 <body>
@@ -410,8 +408,8 @@ footer strong {
 </div>
 </div>
 </header>
-<section class="controls">
-<nav aria-label="Menu categories" class="tabs" id="tabs"><a class="active" href="#menu-top">すべて / All</a>
+<section class="controls" id="menu-categories">
+<nav aria-label="Menu categories" class="tabs" id="tabs"><a class="active" href="#menu-categories">すべて / All</a>
 <a href="#beer">ビール / Beer</a>
 <a href="#nonalcohol">ノンアルコール / Non Alcohol</a>
 <a href="#scotch">スコッチウイスキー / Scotch Whisky</a>
@@ -426,7 +424,6 @@ footer strong {
 <a href="#rumCocktail">ラムカクテル / Rum Cocktails</a>
 <a href="#tequilaCocktail">テキーラカクテル / Tequila Cocktails</a>
 </nav>
-<div class="search-wrap"><div class="light-note">カテゴリを押すと各欄へ移動します。検索はブラウザのページ内検索をご利用ください。 / Tap a category to jump to that section. Use your browser’s Find in page for search.</div></div>
 </section>
 <div class="status">
 <span id="count">All menu / 99 items</span>
