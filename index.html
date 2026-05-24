@@ -131,7 +131,7 @@ h1 {
   padding-bottom: 2px;
 }
 
-.tabs button {
+.tabs button, .tabs a {
   flex: 0 0 auto;
   border: 1px solid var(--line-soft);
   background: rgba(255,255,255,.045);
@@ -142,7 +142,7 @@ h1 {
   cursor: pointer;
 }
 
-.tabs button.active {
+.tabs button.active, .tabs a.active {
   background: var(--gold);
   color: #19120a;
   border-color: var(--gold);
@@ -366,6 +366,26 @@ footer strong {
 .search-wrap input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .no-js-note { display: none; }
 
+
+
+.tabs a {
+  text-decoration: none;
+}
+
+.section {
+  scroll-margin-top: 118px;
+}
+
+.light-note {
+  width: 100%;
+  border: 1px solid var(--line-soft);
+  background: rgba(255,255,255,.04);
+  color: var(--dim);
+  border-radius: 16px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
@@ -391,31 +411,29 @@ footer strong {
 </div>
 </header>
 <section class="controls">
-<nav aria-label="Menu categories" class="tabs" id="tabs">
-<button class="active" data-category="beer" type="button">ビール / Beer</button>
-<button class="" data-category="nonalcohol" type="button">ノンアルコール / Non Alcohol</button>
-<button class="" data-category="scotch" type="button">スコッチウイスキー / Scotch Whisky</button>
-<button class="" data-category="american" type="button">アメリカンウイスキー / American Whiskey</button>
-<button class="" data-category="irish" type="button">アイリッシュウイスキー / Irish Whiskey</button>
-<button class="" data-category="japanese" type="button">ジャパニーズウイスキー / Japanese Whisky</button>
-<button class="" data-category="rum" type="button">ラム / Rum・Rhum・Ron</button>
-<button class="" data-category="singani" type="button">シンガニ / Singani</button>
-<button class="" data-category="chilePisco" type="button">チリピスコ / Chile Pisco</button>
-<button class="" data-category="ginCocktail" type="button">ジンカクテル / Gin Cocktails</button>
-<button class="" data-category="vodkaCocktail" type="button">ウォッカカクテル / Vodka Cocktails</button>
-<button class="" data-category="rumCocktail" type="button">ラムカクテル / Rum Cocktails</button>
-<button class="" data-category="tequilaCocktail" type="button">テキーラカクテル / Tequila Cocktails</button>
+<nav aria-label="Menu categories" class="tabs" id="tabs"><a class="active" href="#menu-top">すべて / All</a>
+<a href="#beer">ビール / Beer</a>
+<a href="#nonalcohol">ノンアルコール / Non Alcohol</a>
+<a href="#scotch">スコッチウイスキー / Scotch Whisky</a>
+<a href="#american">アメリカンウイスキー / American Whiskey</a>
+<a href="#irish">アイリッシュウイスキー / Irish Whiskey</a>
+<a href="#japanese">ジャパニーズウイスキー / Japanese Whisky</a>
+<a href="#rum">ラム / Rum・Rhum・Ron</a>
+<a href="#singani">シンガニ / Singani</a>
+<a href="#chilePisco">チリピスコ / Chile Pisco</a>
+<a href="#ginCocktail">ジンカクテル / Gin Cocktails</a>
+<a href="#vodkaCocktail">ウォッカカクテル / Vodka Cocktails</a>
+<a href="#rumCocktail">ラムカクテル / Rum Cocktails</a>
+<a href="#tequilaCocktail">テキーラカクテル / Tequila Cocktails</a>
 </nav>
-<div class="search-wrap">
-<input autocomplete="off" id="search" placeholder="銘柄・カテゴリで検索 / Search menu" type="search"/>
-</div>
+<div class="search-wrap"><div class="light-note">カテゴリを押すと各欄へ移動します。検索はブラウザのページ内検索をご利用ください。 / Tap a category to jump to that section. Use your browser’s Find in page for search.</div></div>
 </section>
 <div class="status">
 <span id="count">All menu / 99 items</span>
 <span>価格は税込表示 / Tax included</span>
 </div>
-<main id="root">
-<section class="section" data-category="beer" data-label="ビール / Beer">
+<main id="menu-top">
+<section class="section" data-category="beer" data-label="ビール / Beer" id="beer">
 <div class="section-head">
 <h2>ビール / Beer</h2>
 <p>軽やかな一杯から、香ばしいスタウトまで。</p>
@@ -457,7 +475,7 @@ footer strong {
 <div class="price">¥900<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="nonalcohol" data-label="ノンアルコール / Non Alcohol">
+<section class="section" data-category="nonalcohol" data-label="ノンアルコール / Non Alcohol" id="nonalcohol">
 <div class="section-head">
 <h2>ノンアルコール / Non Alcohol</h2>
 <p>お酒を飲まない方にも、バーの時間をゆっくり楽しんでいただけます。</p>
@@ -487,7 +505,7 @@ footer strong {
 <div class="price">¥700<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="scotch" data-label="スコッチウイスキー / Scotch Whisky">
+<section class="section" data-category="scotch" data-label="スコッチウイスキー / Scotch Whisky" id="scotch">
 <div class="section-head">
 <h2>スコッチウイスキー / Scotch Whisky</h2>
 <p>地域や蒸溜所ごとの個性を楽しめるスコッチウイスキー。</p>
@@ -613,7 +631,7 @@ footer strong {
 <div class="price">¥2,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="american" data-label="アメリカンウイスキー / American Whiskey">
+<section class="section" data-category="american" data-label="アメリカンウイスキー / American Whiskey" id="american">
 <div class="section-head">
 <h2>アメリカンウイスキー / American Whiskey</h2>
 <p>バーボン、コーン、アメリカンシングルモルトなど。</p>
@@ -639,7 +657,7 @@ footer strong {
 <div class="price">¥1,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="irish" data-label="アイリッシュウイスキー / Irish Whiskey">
+<section class="section" data-category="irish" data-label="アイリッシュウイスキー / Irish Whiskey" id="irish">
 <div class="section-head">
 <h2>アイリッシュウイスキー / Irish Whiskey</h2>
 <p>なめらかで親しみやすいアイリッシュウイスキー。</p>
@@ -653,7 +671,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="japanese" data-label="ジャパニーズウイスキー / Japanese Whisky">
+<section class="section" data-category="japanese" data-label="ジャパニーズウイスキー / Japanese Whisky" id="japanese">
 <div class="section-head">
 <h2>ジャパニーズウイスキー / Japanese Whisky</h2>
 <p>日本各地の蒸溜所・ブランドによるウイスキー。</p>
@@ -691,7 +709,7 @@ footer strong {
 <div class="price">¥1,600<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="rum" data-label="ラム / Rum・Rhum・Ron">
+<section class="section" data-category="rum" data-label="ラム / Rum・Rhum・Ron" id="rum">
 <div class="section-head">
 <h2>ラム / Rum・Rhum・Ron</h2>
 <p>地域や製法で表情が変わる、奥行きのあるスピリッツ。</p>
@@ -745,7 +763,7 @@ footer strong {
 <div class="price">¥1,600<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="singani" data-label="シンガニ / Singani">
+<section class="section" data-category="singani" data-label="シンガニ / Singani" id="singani">
 <div class="section-head">
 <h2>シンガニ / Singani</h2>
 <p>ボリビアのマスカット・オブ・アレキサンドリア由来の蒸留酒。</p>
@@ -791,7 +809,7 @@ footer strong {
 <div class="price">¥3,000<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="chilePisco" data-label="チリピスコ / Chile Pisco">
+<section class="section" data-category="chilePisco" data-label="チリピスコ / Chile Pisco" id="chilePisco">
 <div class="section-head">
 <h2>チリピスコ / Chile Pisco</h2>
 <p>チリのブドウ蒸留酒。</p>
@@ -801,7 +819,7 @@ footer strong {
 <div class="price">¥1,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="ginCocktail" data-label="ジンカクテル / Gin Cocktails">
+<section class="section" data-category="ginCocktail" data-label="ジンカクテル / Gin Cocktails" id="ginCocktail">
 <div class="section-head">
 <h2>ジンカクテル / Gin Cocktails</h2>
 <p>ジンを使った定番カクテル。</p>
@@ -879,7 +897,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="vodkaCocktail" data-label="ウォッカカクテル / Vodka Cocktails">
+<section class="section" data-category="vodkaCocktail" data-label="ウォッカカクテル / Vodka Cocktails" id="vodkaCocktail">
 <div class="section-head">
 <h2>ウォッカカクテル / Vodka Cocktails</h2>
 <p>ウォッカを使った定番カクテル。</p>
@@ -948,7 +966,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="rumCocktail" data-label="ラムカクテル / Rum Cocktails">
+<section class="section" data-category="rumCocktail" data-label="ラムカクテル / Rum Cocktails" id="rumCocktail">
 <div class="section-head">
 <h2>ラムカクテル / Rum Cocktails</h2>
 <p>ラムを使った定番カクテル。</p>
@@ -999,7 +1017,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="tequilaCocktail" data-label="テキーラカクテル / Tequila Cocktails">
+<section class="section" data-category="tequilaCocktail" data-label="テキーラカクテル / Tequila Cocktails" id="tequilaCocktail">
 <div class="section-head">
 <h2>テキーラカクテル / Tequila Cocktails</h2>
 <p>テキーラを使った定番カクテル。</p>
@@ -1053,57 +1071,6 @@ footer strong {
     </small>
 </footer>
 </div>
-<script>
-(function() {
-  const tabs = Array.from(document.querySelectorAll('#tabs button'));
-  const sections = Array.from(document.querySelectorAll('#root .section'));
-  const search = document.getElementById('search');
-  const count = document.getElementById('count');
-  const categoryLabels = {"beer": "ビール / Beer", "nonalcohol": "ノンアルコール / Non Alcohol", "scotch": "スコッチウイスキー / Scotch Whisky", "american": "アメリカンウイスキー / American Whiskey", "irish": "アイリッシュウイスキー / Irish Whiskey", "japanese": "ジャパニーズウイスキー / Japanese Whisky", "rum": "ラム / Rum・Rhum・Ron", "singani": "シンガニ / Singani", "chilePisco": "チリピスコ / Chile Pisco", "ginCocktail": "ジンカクテル / Gin Cocktails", "vodkaCocktail": "ウォッカカクテル / Vodka Cocktails", "rumCocktail": "ラムカクテル / Rum Cocktails", "tequilaCocktail": "テキーラカクテル / Tequila Cocktails"};
-  let currentCategory = "beer";
 
-  function applyFilter() {
-    const q = (search.value || '').trim().toLowerCase();
-    let visibleItems = 0;
-
-    sections.forEach(section => {
-      const sectionCategory = section.dataset.category;
-      const categoryMatched = !q && sectionCategory === currentCategory;
-      let sectionHasVisibleItem = false;
-
-      const items = Array.from(section.querySelectorAll('.item'));
-      items.forEach(item => {
-        const itemMatched = q ? item.dataset.search.includes(q) : categoryMatched;
-        item.style.display = itemMatched ? '' : 'none';
-        if (itemMatched) {
-          visibleItems += 1;
-          sectionHasVisibleItem = true;
-        }
-      });
-
-      section.classList.toggle('hidden', !sectionHasVisibleItem);
-    });
-
-    tabs.forEach(button => {
-      button.classList.toggle('active', !q && button.dataset.category === currentCategory);
-    });
-
-    count.textContent = q
-      ? `${visibleItems} items found`
-      : `${categoryLabels[currentCategory]} / ${visibleItems} items`;
-  }
-
-  tabs.forEach(button => {
-    button.addEventListener('click', () => {
-      currentCategory = button.dataset.category;
-      search.value = '';
-      applyFilter();
-    });
-  });
-
-  search.addEventListener('input', applyFilter);
-  applyFilter();
-})();
-</script>
 </body>
 </html>
