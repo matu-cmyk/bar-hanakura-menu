@@ -131,7 +131,7 @@ h1 {
   padding-bottom: 2px;
 }
 
-.tabs button {
+.tabs a {
   flex: 0 0 auto;
   border: 1px solid var(--line-soft);
   background: rgba(255,255,255,.045);
@@ -140,33 +140,20 @@ h1 {
   padding: 9px 12px;
   font-size: 13px;
   cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.tabs button.active {
+.tabs a:hover,
+.tabs a:focus {
   background: var(--gold);
   color: #19120a;
   border-color: var(--gold);
   font-weight: 700;
 }
 
-.search-wrap {
-  margin-top: 10px;
-}
 
-.search-wrap input {
-  width: 100%;
-  border: 1px solid var(--line-soft);
-  background: rgba(255,255,255,.05);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 12px 14px;
-  font-size: 14px;
-  outline: none;
-}
 
-.search-wrap input::placeholder {
-  color: var(--dim);
-}
 
 .status {
   display: flex;
@@ -178,6 +165,7 @@ h1 {
 }
 
 .section {
+  scroll-margin-top: 112px;
   border: 1px solid var(--line-soft);
   background: rgba(255,255,255,.035);
   border-radius: 22px;
@@ -360,10 +348,7 @@ footer strong {
 }
 
 
-/* Static-render safety: menu exists in HTML even if JavaScript fails */
-.section.hidden { display: none; }
-.tabs button:focus-visible,
-.search-wrap input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.tabs a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .no-js-note { display: none; }
 
 </style>
@@ -390,32 +375,29 @@ footer strong {
 </div>
 </div>
 </header>
-<section class="controls">
-<nav aria-label="Menu categories" class="tabs" id="tabs">
-<button class="active" data-category="beer" type="button">ビール / Beer</button>
-<button class="" data-category="nonalcohol" type="button">ノンアルコール / Non Alcohol</button>
-<button class="" data-category="scotch" type="button">スコッチウイスキー / Scotch Whisky</button>
-<button class="" data-category="american" type="button">アメリカンウイスキー / American Whiskey</button>
-<button class="" data-category="irish" type="button">アイリッシュウイスキー / Irish Whiskey</button>
-<button class="" data-category="japanese" type="button">ジャパニーズウイスキー / Japanese Whisky</button>
-<button class="" data-category="rum" type="button">ラム / Rum・Rhum・Ron</button>
-<button class="" data-category="singani" type="button">シンガニ / Singani</button>
-<button class="" data-category="chilePisco" type="button">チリピスコ / Chile Pisco</button>
-<button class="" data-category="ginCocktail" type="button">ジンカクテル / Gin Cocktails</button>
-<button class="" data-category="vodkaCocktail" type="button">ウォッカカクテル / Vodka Cocktails</button>
-<button class="" data-category="rumCocktail" type="button">ラムカクテル / Rum Cocktails</button>
-<button class="" data-category="tequilaCocktail" type="button">テキーラカクテル / Tequila Cocktails</button>
+<section class="controls" id="menu-categories">
+<nav aria-label="Menu categories" class="tabs" id="tabs"><a data-category="beer" href="#cat-beer">ビール / Beer</a>
+<a data-category="nonalcohol" href="#cat-nonalcohol">ノンアルコール / Non Alcohol</a>
+<a data-category="scotch" href="#cat-scotch">スコッチウイスキー / Scotch Whisky</a>
+<a data-category="american" href="#cat-american">アメリカンウイスキー / American Whiskey</a>
+<a data-category="irish" href="#cat-irish">アイリッシュウイスキー / Irish Whiskey</a>
+<a data-category="japanese" href="#cat-japanese">ジャパニーズウイスキー / Japanese Whisky</a>
+<a data-category="rum" href="#cat-rum">ラム / Rum・Rhum・Ron</a>
+<a data-category="singani" href="#cat-singani">シンガニ / Singani</a>
+<a data-category="chilePisco" href="#cat-chilePisco">チリピスコ / Chile Pisco</a>
+<a data-category="ginCocktail" href="#cat-ginCocktail">ジンカクテル / Gin Cocktails</a>
+<a data-category="vodkaCocktail" href="#cat-vodkaCocktail">ウォッカカクテル / Vodka Cocktails</a>
+<a data-category="rumCocktail" href="#cat-rumCocktail">ラムカクテル / Rum Cocktails</a>
+<a data-category="tequilaCocktail" href="#cat-tequilaCocktail">テキーラカクテル / Tequila Cocktails</a>
 </nav>
-<div class="search-wrap">
-<input autocomplete="off" id="search" placeholder="銘柄・カテゴリで検索 / Search menu" type="search"/>
-</div>
+
 </section>
 <div class="status">
-<span id="count">All menu / 94 items</span>
+<span id="count">全メニュー / 94 items</span>
 <span>価格は税込表示 / Tax included</span>
 </div>
 <main id="root">
-<section class="section" data-category="beer" data-label="ビール / Beer">
+<section class="section" data-category="beer" data-label="ビール / Beer" id="cat-beer">
 <div class="section-head">
 <h2>ビール / Beer</h2>
 <p>軽やかな一杯から、香ばしいスタウトまで。</p>
@@ -457,7 +439,7 @@ footer strong {
 <div class="price">¥900<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="nonalcohol" data-label="ノンアルコール / Non Alcohol">
+<section class="section" data-category="nonalcohol" data-label="ノンアルコール / Non Alcohol" id="cat-nonalcohol">
 <div class="section-head">
 <h2>ノンアルコール / Non Alcohol</h2>
 <p>お酒を飲まない方にも、バーの時間をゆっくり楽しんでいただけます。</p>
@@ -487,7 +469,7 @@ footer strong {
 <div class="price">¥700<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="scotch" data-label="スコッチウイスキー / Scotch Whisky">
+<section class="section" data-category="scotch" data-label="スコッチウイスキー / Scotch Whisky" id="cat-scotch">
 <div class="section-head">
 <h2>スコッチウイスキー / Scotch Whisky</h2>
 <p>地域や蒸溜所ごとの個性を楽しめるスコッチウイスキー。</p>
@@ -496,7 +478,6 @@ footer strong {
 <div><div class="name">クライヌリッシュ14年 Clynelish 14 Years Old</div><div class="desc-ja">スコットランド北ハイランドの蒸溜所。ワクシーな質感で知られるシングルモルトです。</div><div class="desc-en">A Northern Highland single malt known for its signature waxy texture.</div><div class="meta"><span class="meta-ja">度数：46% / 樽：バーボン樽</span><span class="meta-en">ABV: 46% / Cask: Bourbon casks</span></div></div>
 <div class="price">¥1,500<span class="tax">税込</span></div>
 </article>
-
 <article class="item" data-search="ストラスアーン strathearn スコッチウイスキー / scotch whisky ハイランドの小規模蒸溜所で造られる、クラフト感のあるシングルモルトです。 a craft-style highland single malt from a small-scale distillery. 度数：ボトル表記 abv: see bottle">
 <div><div class="name">ストラスアーン Strathearn</div><div class="desc-ja">ハイランドの小規模蒸溜所で造られる、クラフト感のあるシングルモルトです。</div><div class="desc-en">A craft-style Highland single malt from a small-scale distillery.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,800<span class="tax">税込</span></div>
@@ -513,8 +494,6 @@ footer strong {
 <div><div class="name">タリスカー10年 Talisker 10 Year Old</div><div class="desc-ja">スカイ島タリスカーの定番。潮気、スモーク、胡椒のような余韻が魅力です。</div><div class="desc-en">A classic single malt from the Isle of Skye, with coastal smoke and a peppery finish.</div><div class="meta"><span class="meta-ja">度数：45.8%</span><span class="meta-en">ABV: 45.8%</span></div></div>
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article><article class="item" data-search="スカリーワグ scallywag スコッチウイスキー / scotch whisky スペイサイドのモルトをブレンドした、ダグラスレインのブレンデッドモルトです。シェリー樽由来の甘みと華やかさが楽しめます。 a douglas laing blended malt made from speyside malts, with sherry-cask sweetness and a bright, rich character. 度数：46% / 樽：シェリー樽主体 abv: 46% / cask: mainly sherry casks"><div><div class="name">スカリーワグ Scallywag</div><div class="desc-ja">スペイサイドのモルトをブレンドした、ダグラスレインのブレンデッドモルトです。シェリー樽由来の甘みと華やかさが楽しめます。</div><div class="desc-en">A Douglas Laing blended malt made from Speyside malts, with sherry-cask sweetness and a bright, rich character.</div><div class="meta"><span class="meta-ja">度数：46% / 樽：シェリー樽主体</span><span class="meta-en">ABV: 46% / Cask: Mainly sherry casks</span></div></div><div class="price">¥1,400<span class="tax">税込</span></div></article>
-
-
 <article class="item" data-search="レダイグ18年 ledaig 18 year old スコッチウイスキー / scotch whisky マル島トバモリー蒸溜所のピーテッドタイプ。重厚なスモークが楽しめます。 a peated style from tobermory distillery on mull, with deep smoky character. 度数：46.3% / 樽：バーボン樽 / シェリー樽 abv: 46.3% / cask: bourbon casks / sherry casks">
 <div><div class="name">レダイグ18年 Ledaig 18 Year Old</div><div class="desc-ja">マル島トバモリー蒸溜所のピーテッドタイプ。重厚なスモークが楽しめます。</div><div class="desc-en">A peated style from Tobermory Distillery on Mull, with deep smoky character.</div><div class="meta"><span class="meta-ja">度数：46.3% / 樽：バーボン樽 / シェリー樽</span><span class="meta-en">ABV: 46.3% / Cask: Bourbon casks / Sherry casks</span></div></div>
 <div class="price">¥2,000<span class="tax">税込</span></div>
@@ -547,7 +526,6 @@ footer strong {
 <div><div class="name">ボウモア12年 Bowmore 12 Years Old</div><div class="desc-ja">アイラ島ボウモアの定番。穏やかなスモークとシェリー由来の甘みが調和します。</div><div class="desc-en">A classic Bowmore from Islay, balancing gentle smoke with sherry-influenced sweetness.</div><div class="meta"><span class="meta-ja">度数：40%</span><span class="meta-en">ABV: 40%</span></div></div>
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
-
 <article class="item" data-search="ノーススター グレンロセス north star glenrothes スコッチウイスキー / scotch whisky 独立系ボトラー、ノーススターによるグレンロセス。スペイサイドらしい丸みを楽しめます。 an independent north star bottling of glenrothes, showing rounded speyside character. 度数：ボトル表記 abv: see bottle">
 <div><div class="name">ノーススター グレンロセス NORTH STAR GLENROTHES</div><div class="desc-ja">独立系ボトラー、ノーススターによるグレンロセス。スペイサイドらしい丸みを楽しめます。</div><div class="desc-en">An independent North Star bottling of Glenrothes, showing rounded Speyside character.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥2,000<span class="tax">税込</span></div>
@@ -601,7 +579,7 @@ footer strong {
 <div class="price">¥2,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="american" data-label="アメリカンウイスキー / American Whiskey">
+<section class="section" data-category="american" data-label="アメリカンウイスキー / American Whiskey" id="cat-american">
 <div class="section-head">
 <h2>アメリカンウイスキー / American Whiskey</h2>
 <p>バーボン、コーン、アメリカンシングルモルトなど。</p>
@@ -627,7 +605,7 @@ footer strong {
 <div class="price">¥1,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="irish" data-label="アイリッシュウイスキー / Irish Whiskey">
+<section class="section" data-category="irish" data-label="アイリッシュウイスキー / Irish Whiskey" id="cat-irish">
 <div class="section-head">
 <h2>アイリッシュウイスキー / Irish Whiskey</h2>
 <p>なめらかで親しみやすいアイリッシュウイスキー。</p>
@@ -641,7 +619,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="japanese" data-label="ジャパニーズウイスキー / Japanese Whisky">
+<section class="section" data-category="japanese" data-label="ジャパニーズウイスキー / Japanese Whisky" id="cat-japanese">
 <div class="section-head">
 <h2>ジャパニーズウイスキー / Japanese Whisky</h2>
 <p>日本各地の蒸溜所・ブランドによるウイスキー。</p>
@@ -679,7 +657,7 @@ footer strong {
 <div class="price">¥1,600<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="rum" data-label="ラム / Rum・Rhum・Ron">
+<section class="section" data-category="rum" data-label="ラム / Rum・Rhum・Ron" id="cat-rum">
 <div class="section-head">
 <h2>ラム / Rum・Rhum・Ron</h2>
 <p>地域や製法で表情が変わる、奥行きのあるスピリッツ。</p>
@@ -704,8 +682,6 @@ footer strong {
 <div><div class="name">モカンボ15年 Mocambo 15 Year</div><div class="desc-ja">メキシコ産の熟成ラム。落ち着いた甘みとまろやかな余韻が楽しめます。</div><div class="desc-en">An aged Mexican rum with mellow sweetness and a smooth finish.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article><article class="item" data-search="エルロンプロイビート22年 el ron prohibido reserva 22 ラム / rum・rhum・ron メキシコ産の熟成ラム。濃厚な甘みと樽香、長めの余韻を楽しめる一本です。 an aged mexican rum with rich sweetness, cask aroma, and a long mellow finish. 度数：ボトル表記 abv: see bottle"><div><div class="name">エルロンプロイビート22年 El Ron Prohibido Reserva 22</div><div class="desc-ja">メキシコ産の熟成ラム。濃厚な甘みと樽香、長めの余韻を楽しめる一本です。</div><div class="desc-en">An aged Mexican rum with rich sweetness, cask aroma, and a long mellow finish.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div><div class="price">¥1,700<span class="tax">税込</span></div></article><article class="item" data-search="キャプテンモルガン プライベートストック captain morgan private stock ラム / rum・rhum・ron キャプテンモルガンの上位ライン。バニラやスパイスを感じる、甘くまろやかなダークラムです。 a premium captain morgan expression, a smooth dark rum with vanilla and spice notes. 度数：ボトル表記 abv: see bottle"><div><div class="name">キャプテンモルガン プライベートストック Captain Morgan Private Stock</div><div class="desc-ja">キャプテンモルガンの上位ライン。バニラやスパイスを感じる、甘くまろやかなダークラムです。</div><div class="desc-en">A premium Captain Morgan expression, a smooth dark rum with vanilla and spice notes.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div><div class="price">¥1,500<span class="tax">税込</span></div></article>
-
-
 <article class="item" data-search="レモンハート デメラララム lemon hart demerara rum ラム / rum・rhum・ron デメラララムらしい濃厚な甘みと力強い香味が楽しめます。 a demerara rum with rich sweetness and bold aromatic depth. 度数：ボトル表記 abv: see bottle">
 <div><div class="name">レモンハート デメラララム Lemon Hart Demerara Rum</div><div class="desc-ja">デメラララムらしい濃厚な甘みと力強い香味が楽しめます。</div><div class="desc-en">A Demerara rum with rich sweetness and bold aromatic depth.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,400<span class="tax">税込</span></div>
@@ -718,13 +694,12 @@ footer strong {
 <div><div class="name">BOSO Rhum Fleur -花- Contient de la mélasse</div><div class="desc-ja">モラセス由来の甘みと香ばしさを感じる、房総の国産ラムです。</div><div class="desc-en">A Boso Japanese rum with molasses-derived sweetness and aroma.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,000<span class="tax">税込</span></div>
 </article>
-
 <article class="item" data-search="極上 琵琶乃甘露 ワールドラムリキュール ラム / rum・rhum・ron ラムをベースにしたリキュール。甘みと香りをゆっくり楽しめます。 a rum-based liqueur with gentle sweetness and aromatic depth. 度数：ボトル表記 abv: see bottle">
 <div><div class="name">極上 琵琶乃甘露 ワールドラムリキュール</div><div class="desc-ja">ラムをベースにしたリキュール。甘みと香りをゆっくり楽しめます。</div><div class="desc-en">A rum-based liqueur with gentle sweetness and aromatic depth.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,600<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="singani" data-label="シンガニ / Singani">
+<section class="section" data-category="singani" data-label="シンガニ / Singani" id="cat-singani">
 <div class="section-head">
 <h2>シンガニ / Singani</h2>
 <p>ボリビアのマスカット・オブ・アレキサンドリア由来の蒸留酒。</p>
@@ -741,7 +716,6 @@ footer strong {
 <div><div class="name">ルフェロ グアルダ Rujero Destilado de Guarda</div><div class="desc-ja">熟成感を感じるルフェロのシンガニ。香りに奥行きがあります。</div><div class="desc-en">A Rujero singani expression with added depth and maturity.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥1,300<span class="tax">税込</span></div>
 </article>
-
 <article class="item" data-search="ルフェロ タリクサ rujero tarixa シンガニ / singani タリハ地方らしい華やかな香りを楽しめる、特別感のあるシンガニです。 a special singani expression showing tarija's aromatic character. 度数：ボトル表記 abv: see bottle">
 <div><div class="name">ルフェロ タリクサ Rujero Tarixa</div><div class="desc-ja">タリハ地方らしい華やかな香りを楽しめる、特別感のあるシンガニです。</div><div class="desc-en">A special singani expression showing Tarija's aromatic character.</div><div class="meta"><span class="meta-ja">度数：ボトル表記</span><span class="meta-en">ABV: See bottle</span></div></div>
 <div class="price">¥3,000<span class="tax">税込</span></div>
@@ -767,7 +741,7 @@ footer strong {
 <div class="price">¥3,000<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="chilePisco" data-label="チリピスコ / Chile Pisco">
+<section class="section" data-category="chilePisco" data-label="チリピスコ / Chile Pisco" id="cat-chilePisco">
 <div class="section-head">
 <h2>チリピスコ / Chile Pisco</h2>
 <p>チリのブドウ蒸留酒。</p>
@@ -777,7 +751,7 @@ footer strong {
 <div class="price">¥1,200<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="ginCocktail" data-label="ジンカクテル / Gin Cocktails">
+<section class="section" data-category="ginCocktail" data-label="ジンカクテル / Gin Cocktails" id="cat-ginCocktail">
 <div class="section-head">
 <h2>ジンカクテル / Gin Cocktails</h2>
 <p>ジンを使った定番カクテル。</p>
@@ -855,7 +829,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="vodkaCocktail" data-label="ウォッカカクテル / Vodka Cocktails">
+<section class="section" data-category="vodkaCocktail" data-label="ウォッカカクテル / Vodka Cocktails" id="cat-vodkaCocktail">
 <div class="section-head">
 <h2>ウォッカカクテル / Vodka Cocktails</h2>
 <p>ウォッカを使った定番カクテル。</p>
@@ -924,7 +898,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="rumCocktail" data-label="ラムカクテル / Rum Cocktails">
+<section class="section" data-category="rumCocktail" data-label="ラムカクテル / Rum Cocktails" id="cat-rumCocktail">
 <div class="section-head">
 <h2>ラムカクテル / Rum Cocktails</h2>
 <p>ラムを使った定番カクテル。</p>
@@ -975,7 +949,7 @@ footer strong {
 <div class="price">¥1,400<span class="tax">税込</span></div>
 </article>
 </section>
-<section class="section" data-category="tequilaCocktail" data-label="テキーラカクテル / Tequila Cocktails">
+<section class="section" data-category="tequilaCocktail" data-label="テキーラカクテル / Tequila Cocktails" id="cat-tequilaCocktail">
 <div class="section-head">
 <h2>テキーラカクテル / Tequila Cocktails</h2>
 <p>テキーラを使った定番カクテル。</p>
@@ -1029,57 +1003,6 @@ footer strong {
     </small>
 </footer>
 </div>
-<script>
-(function() {
-  const tabs = Array.from(document.querySelectorAll('#tabs button'));
-  const sections = Array.from(document.querySelectorAll('#root .section'));
-  const search = document.getElementById('search');
-  const count = document.getElementById('count');
-  const categoryLabels = {"beer": "ビール / Beer", "nonalcohol": "ノンアルコール / Non Alcohol", "scotch": "スコッチウイスキー / Scotch Whisky", "american": "アメリカンウイスキー / American Whiskey", "irish": "アイリッシュウイスキー / Irish Whiskey", "japanese": "ジャパニーズウイスキー / Japanese Whisky", "rum": "ラム / Rum・Rhum・Ron", "singani": "シンガニ / Singani", "chilePisco": "チリピスコ / Chile Pisco", "ginCocktail": "ジンカクテル / Gin Cocktails", "vodkaCocktail": "ウォッカカクテル / Vodka Cocktails", "rumCocktail": "ラムカクテル / Rum Cocktails", "tequilaCocktail": "テキーラカクテル / Tequila Cocktails"};
-  let currentCategory = "beer";
 
-  function applyFilter() {
-    const q = (search.value || '').trim().toLowerCase();
-    let visibleItems = 0;
-
-    sections.forEach(section => {
-      const sectionCategory = section.dataset.category;
-      const categoryMatched = !q && sectionCategory === currentCategory;
-      let sectionHasVisibleItem = false;
-
-      const items = Array.from(section.querySelectorAll('.item'));
-      items.forEach(item => {
-        const itemMatched = q ? item.dataset.search.includes(q) : categoryMatched;
-        item.style.display = itemMatched ? '' : 'none';
-        if (itemMatched) {
-          visibleItems += 1;
-          sectionHasVisibleItem = true;
-        }
-      });
-
-      section.classList.toggle('hidden', !sectionHasVisibleItem);
-    });
-
-    tabs.forEach(button => {
-      button.classList.toggle('active', !q && button.dataset.category === currentCategory);
-    });
-
-    count.textContent = q
-      ? `${visibleItems} items found`
-      : `${categoryLabels[currentCategory]} / ${visibleItems} items`;
-  }
-
-  tabs.forEach(button => {
-    button.addEventListener('click', () => {
-      currentCategory = button.dataset.category;
-      search.value = '';
-      applyFilter();
-    });
-  });
-
-  search.addEventListener('input', applyFilter);
-  applyFilter();
-})();
-</script>
 </body>
 </html>
